@@ -1,8 +1,10 @@
 # kio
+[![Version](https://img.shields.io/maven-central/v/dev.sitar/kio)](https://search.maven.org/artifact/dev.sitar/kio)
+
 A Kotlin Multiplatform IO library that supports the JS (node only), JVM, and Native targets.
 
 ## Dependency
-Currently not published to any remote repository (maven central is planned). Kio must be published locally to use (or included as a composite project through Gradle).
+Kio releases are published to Maven Central. Replace `{version}` with the latest version of Kio.
 ```kotlin
 implementation("dev.sitar:kio:{version}")
 ```
