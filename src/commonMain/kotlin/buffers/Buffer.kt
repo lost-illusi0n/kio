@@ -8,6 +8,8 @@ import dev.sitar.kio.emptyPool
 public interface Buffer : SequentialReader, SequentialWriter, AbsoluteReader, AbsoluteWriter, Sliceable {
     override val bufferPool: Pool<Buffer>
 
+    public val backingArray: ByteArray?
+
     public val capacity: Int
 
     public fun resize(n: Int)
@@ -49,6 +51,8 @@ public interface Buffer : SequentialReader, SequentialWriter, AbsoluteReader, Ab
     public companion object {
         public val Empty: Buffer = object : Buffer {
             override val bufferPool: Pool<Buffer> = emptyPool { error("Cannot generate buffers for an empty buffer!") }
+
+            override val backingArray: ByteArray? = null
 
             override val capacity: Int = 0
 

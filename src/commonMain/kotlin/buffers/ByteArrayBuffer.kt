@@ -11,6 +11,9 @@ public class ByteArrayBuffer(
     public var buffer: ByteArray = buffer
         private set
 
+    override val backingArray: ByteArray
+        get() = buffer
+
     override val capacity: Int
         get() = buffer.size
 
