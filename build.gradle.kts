@@ -34,7 +34,7 @@ publishing {
             artifact(javadocJar)
 
             pom {
-                name.set("koi")
+                name.set("kio")
                 description.set("A Kotlin Multiplatform IO Library")
                 licenses {
                     license {
