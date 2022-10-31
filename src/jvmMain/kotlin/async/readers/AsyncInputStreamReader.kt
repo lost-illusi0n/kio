@@ -12,7 +12,7 @@ public class AsyncInputStreamReader(
     override val bufferPool: Pool<Buffer> = DefaultBufferPool
 ) : AsyncReader {
     override val openForRead: Boolean
-        get() = inputStream.available() > 0
+        get() = true
 
     override suspend fun discard(n: Int): Int {
         if (!openForRead) return -1
