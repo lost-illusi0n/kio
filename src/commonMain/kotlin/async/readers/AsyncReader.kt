@@ -112,9 +112,9 @@ public suspend fun AsyncReader.readBytes(len: Int): Buffer {
             return buffer(0)
         }
 
-        if (result.size != total) result.copyOf(total)
+        if (result.size != total) result = result.copyOf(total)
 
-        return ByteArrayBuffer(result)
+        return ByteArrayBuffer(result).also { it.writeIndex = total }
     }
 
     result = ByteArray(total)
@@ -127,7 +127,7 @@ public suspend fun AsyncReader.readBytes(len: Int): Buffer {
         remaining -= count
     }
 
-    return ByteArrayBuffer(result)
+    return ByteArrayBuffer(result).also { it.writeIndex = total }
 }
 
 public suspend fun AsyncReader.readFully(n: Int) {
