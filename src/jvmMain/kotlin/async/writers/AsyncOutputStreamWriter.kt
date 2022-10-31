@@ -18,8 +18,6 @@ public class AsyncOutputStreamWriter(
         get() = true
 
     override suspend fun writeBytes(slice: Slice): Int {
-        println("writing")
-
         val (b, off, len) = slice
 
         outputStream.write(b,  off, len)
