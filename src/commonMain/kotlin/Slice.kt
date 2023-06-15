@@ -27,6 +27,14 @@ public data class Slice(public val bytes: ByteArray, public val start: Int, publ
         bytes.copyInto(slice.bytes, slice.start, start, start + length)
     }
 
+    public fun contentEquals(other: Slice): Boolean {
+        if (length != other.length) return false
+
+        for (i in 0 until length) if (this[i] != other[i]) return false
+
+        return true
+    }
+
     public companion object {
         public val Empty: Slice = Slice(ByteArray(0), 0, 0)
     }

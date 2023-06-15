@@ -130,8 +130,10 @@ public suspend fun AsyncReader.readBytes(len: Int): Buffer {
     return ByteArrayBuffer(result).also { it.writeIndex = total }
 }
 
-public suspend fun AsyncReader.readFully(n: Int) {
-    return readFully(n, buffer(n))
+public suspend fun AsyncReader.readFully(n: Int): Buffer {
+    val out = buffer(n)
+    readFully(n, out)
+    return out
 }
 
 public suspend fun AsyncReader.readFully(n: Int, dest: Buffer) {

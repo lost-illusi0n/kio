@@ -4,10 +4,12 @@ import dev.sitar.kio.ByteOrder
 import dev.sitar.kio.Pool
 import dev.sitar.kio.use
 
-public interface SequentialReader {
+public interface SequentialReader: Iterable<Byte> {
     public val bufferPool: Pool<Buffer>
 
     public var readIndex: Int
+
+    public override operator fun iterator(): Iterator<Byte> = SequentialReaderIterator(this)
 
     public fun discard(n: Int)
 
@@ -50,5 +52,15 @@ private inline fun <R> SequentialReader.internalRead(n: Int, block: Buffer.() ->
     return bufferPool.use(n) {
         readBytes(n, it)
         block(it)
+    }
+}
+
+public class SequentialReaderIterator(public val reader: SequentialReader): Iterator<Byte> {
+    public override operator fun hasNext(): Boolean {
+        return true
+    }
+
+    public override operator fun next(): Byte {
+        return reader.read()
     }
 }

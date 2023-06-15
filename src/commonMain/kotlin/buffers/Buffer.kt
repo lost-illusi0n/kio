@@ -92,6 +92,6 @@ public fun Buffer.contentEquals(b: Buffer): Boolean {
     return index == capacity
 }
 
-public fun buffer(size: Int = 32, block: Buffer.() -> Unit = { }): Buffer {
+public inline fun buffer(size: Int = 32, block: Buffer.() -> Unit = { }): Buffer {
     return ByteArrayBuffer(ByteArray(size)).apply(block)
 }

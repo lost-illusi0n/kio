@@ -21,7 +21,6 @@ public class SizedBufferPool(capacity: Int, chainedCapacity: Int) : Pool<Buffer>
                 this[it] = 0
             }
 
-
             writeIndex = 0
             readIndex = 0
         }

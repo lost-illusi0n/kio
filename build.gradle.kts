@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "dev.sitar"
-version = "1.1.0"
+version = "1.1.1"
 
 val javadocJar = tasks.register("javadocJar", Jar::class.java) {
     archiveClassifier.set("javadoc")
@@ -58,7 +58,7 @@ publishing {
                 developers {
                     developer {
                         name.set("Marco Sitar")
-                        email.set("im@lostillusion.net")
+                        email.set("marco+oss@sitar.dev")
                     }
                 }
             }
