@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "1.7.10"
+    kotlin("multiplatform") version "1.8.20"
     id("maven-publish")
     id("signing")
 }
@@ -86,7 +86,7 @@ kotlin {
 
     jvm()
 
-    js(BOTH) { nodejs() }
+    js(IR) { nodejs() }
 
     linuxX64()
     mingwX64()
