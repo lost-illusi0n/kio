@@ -27,7 +27,9 @@ public class AsyncInputStreamReader(
 
         val (b, off, len) = dest[dest.writeIndex..(dest.writeIndex + n)]
 
-        val read = inputStream.readNBytes(b, off, len)
+        val read = withContext(Dispatchers.IO) {
+            inputStream.readNBytes(b, off, len)
+        }
         dest.writeIndex += read
         return read
     }
