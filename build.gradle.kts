@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "dev.sitar"
-version = "1.1.2"
+version = "1.1.3"
 
 val javadocJar = tasks.register("javadocJar", Jar::class.java) {
     archiveClassifier.set("javadoc")
@@ -82,6 +82,8 @@ repositories {
 }
 
 kotlin {
+    jvmToolchain(11)
+
     explicitApi()
 
     jvm()
